@@ -112,8 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
+    final appBar = AppBar(
         title: Text('Personal Expenses'),
         actions: <Widget>[
           IconButton(
@@ -121,8 +120,10 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.add))
 
         ],
-      ),
+      );
 
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
             //mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -132,8 +133,18 @@ class _MyHomePageState extends State<MyHomePage> {
             // first segment of app 
             //second way of
 
-              Chart(_recentTranscations),
-              TransactionList(_userTransactions, _deleteTransaction)
+              Container(
+                height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height - 
+                                MediaQuery.of(context).padding.top)* .40,
+                child: Chart(_recentTranscations)
+                ),
+              Container(
+                height: (MediaQuery.of(context).size.height - 
+                                appBar.preferredSize.height - 
+                                MediaQuery.of(context).padding.top)* .60,
+                child: TransactionList(_userTransactions, _deleteTransaction)
+                )
         
         
         
