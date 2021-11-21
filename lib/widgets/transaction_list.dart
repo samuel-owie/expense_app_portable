@@ -35,7 +35,7 @@ class  TransactionList extends StatelessWidget {
           );
         },
       )
-
+      // Enabled keys for ease of rendering
       :ListView(
         children: transactions.map((tx) =>  TransactionItem(
             key: ValueKey(tx.id),
